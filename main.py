@@ -1,43 +1,56 @@
-def timer(func):
-	import time
-	def wrapper():
-		start = time.time()
-		func()
-		end = time.time()
-		print('time: ', end-start)
-	return wrapper
-
-count = 0
-def counter(func):
-	def wrapper():
-		global count
-		count+=1
-		func()
-		print(func.__name__, 'is called', count)
-	return wrapper
-
-def logging(func):
+def angry(func):
 	def wrapper():
 		func()
-		print('Function is',func.__name__)
+		print('he is angry')
 	return wrapper
 
-@logging
-@counter
-@timer
-def webpage():
-	import requests
-	page = requests.get('https://www.random.org/')
-	print(page.text)
+@angry
+def human():
+	print('this is human')
 
-@counter
-@timer
-def ask():
-	a = input('Text: ')
-	# print(a)
+human()
+# Добавить 10 декораторов, которые будут дополнять эту функцию. Например, декораторы с чертами характера
 
-# webpage()
-ask()
+# def timer(func):
+# 	import time
+# 	def wrapper():
+# 		start = time.time()
+# 		func()
+# 		end = time.time()
+# 		print('time: ', end-start)
+# 	return wrapper
+
+# count = 0
+# def counter(func):
+# 	def wrapper():
+# 		global count
+# 		count+=1
+# 		func()
+# 		print(func.__name__, 'is called', count)
+# 	return wrapper
+
+# def logging(func):
+# 	def wrapper():
+# 		func()
+# 		print('Function is',func.__name__)
+# 	return wrapper
+
+# @logging
+# @counter
+# @timer
+# def webpage():
+# 	import requests
+# 	page = requests.get('https://www.random.org/')
+# 	print(page.text)
+
+# @counter
+# @timer
+# def ask():
+# 	a = input('Text: ')
+# 	# print(a)
+
+# # webpage()
+# ask()
 # webpage()
 # webpage()
 # def salat(func):
