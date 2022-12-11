@@ -1,23 +1,94 @@
-num1 = num2 = sign = ''
-while num1 == '' or num2 == '' or sign == '':
-	try:
-		num1 = int(input('Number1: '))
-		sign = input('Sign: ')
-		num2 = int(input('Number2: '))
-		if sign == '/' and num2 == 0:
-			raise ZeroDivisionError
-	except ValueError:
-		print('Wrong value')
-	except ZeroDivisionError:
-		sign = ''
-		print('Go to school')
-	except:
-		print('Something go wrong')
-	try:
-		if sign == '+':
-			print(f"{num1} + {num2} = {num1+num2}")
-	except TypeError:
-		print('Wrong types')
+def timer(func):
+	import time
+	def wrapper():
+		start = time.time()
+		func()
+		end = time.time()
+		print('time: ', end-start)
+	return wrapper
+
+count = 0
+def counter(func):
+	def wrapper():
+		global count
+		count+=1
+		func()
+		print(func.__name__, 'is called', count)
+	return wrapper
+
+def logging(func):
+	def wrapper():
+		func()
+		print('Function is',func.__name__)
+	return wrapper
+
+@logging
+@counter
+@timer
+def webpage():
+	import requests
+	page = requests.get('https://www.random.org/')
+	print(page.text)
+
+@counter
+@timer
+def ask():
+	a = input('Text: ')
+	# print(a)
+
+# webpage()
+ask()
+# webpage()
+# webpage()
+# def salat(func):
+# 	def wrapper():
+# 		func()
+# 		print('salat')
+# 	return wrapper
+
+# def tomato(func):
+# 	def wrapper():
+# 		func()
+# 		print('tomato')
+# 	return wrapper
+
+# @tomato
+# @salat
+# def burger():
+# 	print('This is burger')
+
+# @salat
+# def sandwich():
+# 	print('this is sandwich')
+
+# # burger()
+# sandwich()
+# num1 = num2 = sign = ''
+# while num1 == '' or num2 == '' or sign == '':
+# 	try:
+# 		num1 = int(input('Number1: '))
+# 		sign = input('Sign: ')
+# 		num2 = int(input('Number2: '))
+# 		if sign == '/' and num2 == 0:
+# 			raise ZeroDivisionError
+# 	except ValueError:
+# 		print('Wrong value')
+# 	except ZeroDivisionError:
+# 		sign = ''
+# 		print('Go to school')
+# 	except:
+# 		print('Something go wrong')
+# 	try:
+# 		if sign == '+':
+# 			print(f"{num1} + {num2} = {num1+num2}")
+# 		elif sign == '':
+# 			print()
+# 	except TypeError:
+# 		print('Wrong types')
+
+# Задание 1: Добавить остальные операции в калькулятор (-, *, /)
+# Задание 2: Сделать проверку на правильность знака. Например, вместо +,-,*,/ пользователь ввел !. Обработать ошибку
+# Задание 3: Перед использованием калькулятора, попросить пользователя представиться. Если он вводит числа в своем имени, то обработать исключительную ситуацию.
 # try:
 # 	a = 5
 # 	print(a/0)
