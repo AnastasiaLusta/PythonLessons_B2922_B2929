@@ -1,33 +1,68 @@
-class Human:
-	def __init__(self, name):
-		self.name = name
-		self.age = 0
-		self.clever = 5
-	def live(self):
-		print(self.name, 'is alive')
+num1 = num2 = sign = ''
+while num1 == '' or num2 == '' or sign == '':
+	try:
+		num1 = int(input('Number1: '))
+		sign = input('Sign: ')
+		num2 = int(input('Number2: '))
+		if sign == '/' and num2 == 0:
+			raise ZeroDivisionError
+	except ValueError:
+		print('Wrong value')
+	except ZeroDivisionError:
+		sign = ''
+		print('Go to school')
+	except:
+		print('Something go wrong')
+	try:
+		if sign == '+':
+			print(f"{num1} + {num2} = {num1+num2}")
+	except TypeError:
+		print('Wrong types')
+# try:
+# 	a = 5
+# 	print(a/0)
+# except:
+# 	print('You stupid!')
 
-class Woman(Human):
-	def __init__(self,name):
-		super().__init__(name)
-		self.character = True
-	def live(self):
-		# super().live()
-		print('What a wonderful day of', self.name)
-	def nails(self):
-		print(self.name, 'is on manicure')
-class Man(Human):
-	def __init__(self, name):
-		super().__init__(name)
-		self.money = 100
-	def job(self):
-		self.money += 50
+# print('Hello world!')
 
-obj = Human('Bob')
-obj.live()
-obj2 = Woman('Clara')
-obj2.live()
-obj2.nails()
-print(obj2.name, obj2.character, obj2.age)
+# class Human:
+# 	def __init__(self, name):
+# 		self.name = name
+# 		self.age = 0
+# 		self.clever = 5
+# 	def live(self):
+# 		print(self.name, 'is alive')
+
+# class Woman(Human):
+# 	def __init__(self,name):
+# 		super().__init__(name)
+# 		self.character = True
+# 	def live(self):
+# 		# super().live()
+# 		print('What a wonderful day of', self.name)
+# 	def nails(self):
+# 		print(self.name, 'is on manicure')
+# class Man(Human):
+# 	def __init__(self, name):
+# 		super().__init__(name)
+# 		self.money = 100
+# 	def job(self):
+# 		self.money += 50
+# 	def balance(self):
+# 		print('Balance: ', self.money)
+
+# obj = Human('Bob')
+# obj.live()
+# obj2 = Woman('Clara')
+# obj2.live()
+# obj2.nails()
+# print(obj2.name, obj2.character, obj2.age)
+
+
+
+
+# Создать класс Животное. От него наследуются классы Котик, Собачка и Хомячок. В классе есть 3 поля (характеристики) и 2 поведения (методы). В классах конкретных животных добавить по 1 дополнительному поведения
 
 # # print('Hello world')
 # from random import *
